@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .stock-data {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1><center>Real-time Stock Market Data</center></h1>
+        <div class="stock-data" id="stock-data"></div>
+        <canvas id="stock-chart" width="400" height="200"></canvas>
+        <h1>Financial News</h1>
+        <ul id="news-list"></ul>
+    </div>
+
+    <script>
+        // Dummy stock market data
+        const stocksData = [
+            { symbol: 'AAPL', price: 150.52 },
+            { symbol: 'GOOG', price: 2800.75 },
+            { symbol: 'MSFT', price: 305.45 }
+        ];
+
+        // Dummy financial news
+        const financialNews = [
+            { headline: 'Tech stocks surge on earnings reports', source: 'CNN' },
+            { headline: 'Federal Reserve announces interest rate hike', source: 'Bloomberg' }
+        ];
+
+        // Function to render stock market data
+        function renderStockData() {
+            const stockDataContainer = document.getElementById('stock-data');
+            stockDataContainer.innerHTML = '<strong>Stock Market Data:</strong><br>';
+            stocksData.forEach(stock => {
+                stockDataContainer.innerHTML += `${stock.symbol}: $${stock.price}<br>`;
+            });
+        }
+
+        // Function to render stock chart (dummy data)
+        function renderStockChart() {
+            const ctx = document.getElementById('stock-chart').getContext('2d');
+            const labels = stocksData.map(stock => stock.symbol);
+            const prices = stocksData.map(stock => stock.price);
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Stock Prices',
+                        data: prices,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to render financial news
+        function renderFinancialNews() {
+            const newsList = document.getElementById('news-list');
+            newsList.innerHTML = '<strong>Financial News:</strong>';
+            financialNews.forEach(news => {
+                newsList.innerHTML += `<li><strong>${news.headline}</strong> - ${news.source}</li>`;
+            });
+        }
+
+        // Call functions to render data
+        renderStockData();
+        renderStockChart();
+        renderFinancialNews();
+    </script>
+</body>
+</html>

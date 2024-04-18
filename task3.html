@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 30px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        main {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px;
+        }
+        
+        section {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+            position: fixed;
+            bottom: 0;
+            width: 300%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event Planner</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Create Event</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="calendar">
+            <img src="calendar_image.jpg" alt="Calendar Image" style="width: 200%;">
+        </section>
+        
+        <section id="event-details">
+            <!-- Event details display goes here -->
+        </section>
+
+        <section id="create-event-form">
+            <!-- Event creation form goes here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Event Planner</p>
+    </footer>
+
+    <script>
+        // JavaScript Code
+        // Function to display calendar view
+        function displayCalendar() {
+            // Code to display calendar view
+        }
+        
+        // Function to display event details
+        function displayEventDetails(eventId) {
+            // Code to fetch and display event details
+        }
+        
+        // Function to create a new event
+        function createEvent(eventData) {
+            // Code to send event data to server and create a new event
+        }
+        
+        // Function to handle RSVP
+        function handleRSVP(eventId, rsvpStatus) {
+            // Code to update RSVP status for the event
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function () {
+            displayCalendar();
+        });
+        
+        // Example event listener for displaying event details when clicked
+        document.getElementById('calendar').addEventListener('click', function (event) {
+            if (event.target.classList.contains('event')) {
+                const eventId = event.target.dataset.eventId;
+                displayEventDetails(eventId);
+            }
+        });
+        
+        // Example event listener for submitting event creation form
+        document.getElementById('create-event-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const eventData = {
+                title: formData.get('title'),
+                date: formData.get('date'),
+                // Add more fields as needed
+            };
+            createEvent(eventData);
+        });
+        
+        // Example event listener for RSVP button clicks
+        document.getElementById('event-details').addEventListener('click', function (event) {
+            if (event.target.classList.contains('rsvp-button')) {
+                const eventId = event.target.dataset.eventId;
+                const rsvpStatus = event.target.dataset.rsvpStatus;
+                handleRSVP(eventId, rsvpStatus);
+            }
+        });
+    </script>
+</body>
+</html>
